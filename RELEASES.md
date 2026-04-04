@@ -2,6 +2,39 @@
 
 ---
 
+## v1.26.404b — 4 April 2026
+
+### Polish: Bilevel Coloring, Weekly Trends, Print Readability
+
+#### Night Calendar
+- **Bilevel pressure visualization** — time bars are now horizontally split: top half coloured by IPAP (warm amber/orange), bottom half by EPAP (cool blue). Gives clinicians an at-a-glance view of both pressure levels
+- Two-tone pressure gradient legend adapts to device mode
+- "How to read" explanatory text added below the calendar legend
+- Consistent coloring between interactive app and PDF report
+
+#### Weekly Trends
+- Overview trends changed from monthly to **weekly** grouping for denser, more useful data points
+- X-axis labels show the Monday date of each ISO week
+
+#### Print Readability
+- All chart font sizes raised to minimum 6pt for legibility on standard office printers
+- Pressure gradient bar enlarged with bolder labels
+- AHI/Leak/SpO₂ legend squares and text enlarged
+
+#### Report Improvements
+- Trend chart pressure reference lines now mode-dependent: bilevel shows Rx EPAP/IPAP, APAP shows min/max auto range, CPAP shows fixed Rx pressure
+- Dealer Information dialog now has per-field "Show on report" checkboxes — company and email shown by default, name and phone opt-in
+
+#### Patient Information
+- New full-demographics dialog: name, patient ID, sex, date of birth, height, weight, telephone
+- All fields written to the device memory card and used in reports
+
+#### Loading Screen
+- Animated Home Medix logo with pulsing opacity effect while files load
+- Clean branded transition instead of frozen UI
+
+---
+
 ## v1.26.404 — 4 April 2026
 
 ### Major: Waveform Reports & AASM Compliance
@@ -21,25 +54,6 @@
 #### AASM Compliance
 - All respiratory events (OA, CA, HY) now require **≥10 seconds** duration per AASM standards
 - Applied consistently across parser, interactive charts, and PDF reports
-- Replaces previous non-standard thresholds (12s OA, no minimum HY)
-
-#### Patient Information
-- New Patient Information dialog replaces simple name prompt
-- Full demographics: name, patient ID, sex, date of birth, height, weight, telephone
-- All fields written to device memory card (SUD ST_PATIENTS struct)
-
-#### Dealer Branding
-- Per-field visibility checkboxes on Dealer Information dialog
-- Company and email shown by default; name and phone opt-in
-- Only checked fields appear on generated reports
-
-#### Report Improvements
-- Report title changed to "PAP Sleep Therapy Report" (universal across all modes)
-- Therapy mode on cover page now uses most recent device settings
-- Pressure trend chart reference lines are mode-dependent
-- Removed redundant Device Information section
-- Print-optimised gridlines on all chart panels
-- Proper axis labels on all panels (cmH₂O, L/min, ev/hr)
 
 #### Security
 - API key validation on cloud endpoints
@@ -49,7 +63,7 @@
 - File validation in DAT and SUD parsers
 
 #### Bug Fixes
-- Fixed crash on no-DAT sessions (matplotlib canvas overflow from coordinate transform bug)
+- Fixed crash on no-DAT sessions (matplotlib canvas overflow)
 - Fixed stacked panels pushed to page 3 (figure height overflow)
 - Fixed color mismatch between interactive charts and PDF reports
 
@@ -64,10 +78,8 @@
 - **Improved chart quality** — higher resolution charts with better readability across all reports
 
 ### Improvements
-- Report titles now use full clinical terminology (e.g. "Bi-Level Positive Airway Pressure Therapy Report")
-- AHI severity coloring updated to AASM clinical standards (Normal < 5, Mild 5–15, Moderate 15–30, Severe ≥ 30)
+- AHI severity coloring updated to AASM clinical standards
 - Night calendar pressure segments refined for smoother gradient display
-- Pressure color scale adapts to device type (CPAP vs BiPAP range)
 - Respiratory mechanics section prioritized in statistical report
 - Clearer error message when trying to save a report that's already open
 
