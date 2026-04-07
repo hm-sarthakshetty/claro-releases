@@ -27,14 +27,16 @@ Desktop software for reading and reporting CPAP/BiPAP therapy data from Home Med
 - Gap compression for multi-segment sessions
 - Date range filtering for targeted reporting
 - Patient demographics (name, ID, DOB, sex, height, weight) stored on device
-- Dealer branding with per-field visibility control on reports
+- Healthcare provider branding with per-field visibility control on reports
+- Auto-updates — downloads and installs silently when you close the app
+- Weekly trend analysis for therapy adherence tracking
 
 ## Report Structure
 
 ### Clinical Report (full analysis)
 1. Cover page — patient info, device info, analysis period
 2. Therapy summary — per-night table with KPIs
-3. Night calendar — color-coded therapy usage grid
+3. Night calendar — color-coded therapy usage grid with bilevel pressure split
 4. Statistical report — aggregate metrics across all sessions
 5. Trend charts — usage, leak, event index, pressure over time
 6. Settings history — chronological therapy parameter changes
@@ -44,10 +46,14 @@ Desktop software for reading and reporting CPAP/BiPAP therapy data from Home Med
 2. Therapy overview — 6-panel stacked chart with gap compression
 3. Event window analysis (SD card data) — annotated apnea/hypopnea waveforms
 
+## Activation
+
+Claro requires a one-time activation code on first launch. Contact your Home Medix representative or email **claro@homemedix.in** to request a code.
+
 ## Release Notes
 
 See [RELEASES.md](RELEASES.md) for version history.
 
 ## Support
 
-For device or software support, contact your Home Medix dealer.
+For device or software support, contact your Home Medix dealer or email **claro@homemedix.in**.
