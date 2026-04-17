@@ -2,6 +2,39 @@
 
 ---
 
+## v1.26.417.50 — 17 April 2026
+
+### Event Window Analysis rewrite, UI tokenization, new modules
+
+#### Event Window Analysis (waveform event detail charts)
+- Rewrote smart-centering to use per-breath peak inspiratory flow with flank contrast. Markers now land on the actual reduced-amplitude region, not on the SUD-rounded minute that was often 30–60 s off the real event.
+- SUD stores event time at minute resolution (no seconds field) — the new algorithm searches a ±60 s band around the reported minute and places the marker on the most-suppressed `dur_sec` region bounded by normal breathing on both sides.
+- Confidence gate: only HIGH-confidence placements render (≥30 % peak-flow drop vs flanks, AASM hypopnea definition). LOW-confidence events are not drawn rather than showing a marker over ambiguous flow.
+- Cap at 5 charts per session. Section now shows "Showing N of M scored events (high-confidence waveform alignment)".
+- Empirical validation on a real 29-session file: 18 % of scored events render, median shift correction 26 s, max 58 s. Zero silent-fallback or wrong-region placements.
+- Per-block INFO-level log: `event_window: 2026-02-22 rendered 5/32 (slot=7)` for field observability.
+
+#### UI Tokenization
+- New `ui_tokens.py` as the single source of truth for colors, typography, and spacing.
+- `style.qss` removed; all inline `setStyleSheet` calls replaced with object-named selectors tied to the token module.
+- Consistent visual language across app views, dialogs, and chart theming.
+
+#### Chart Fixes
+- Weekly Trends "Avg Usage / Night": divide by calendar nights, not session count — two long sessions in a week no longer show as 8 h/night.
+- Event Distribution: x-axis spans the full therapy clock window; late-night events in gapped sessions no longer get clipped.
+- Minutes at Pressure: cap inter-event `dt` at 5 min so idle gaps don't inflate pressure-bucket time.
+- Night Calendar: block width uses clock span instead of active therapy time; gap regions render correctly.
+
+#### New Modules
+- `dealer.py` — healthcare-provider profile and branded footer for clinical PDFs.
+- `updater.py` — silent background update download + install-on-exit.
+- `upload_queue.py` — persistent file-based FIFO queue with stale-lock stealing and orphan sweep.
+
+#### Testing
+- 275 passed, 21 skipped (was 254). 26 new tests across breath detection, peak-flow centering (HIGH/LOW confidence paths, strong-drop-at-edge), confidence filter gating, selection cap, and window-edge clipping.
+
+---
+
 ## v1.26.406 — 6 April 2026
 
 ### Activation, Auto-Update, Privacy, Testing
