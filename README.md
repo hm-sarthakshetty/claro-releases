@@ -2,11 +2,16 @@
 
 Desktop software for reading and reporting CPAP/BiPAP therapy data from Home Medix devices.
 
-## Download
+## Downloads
 
-**[⬇ Download Latest Installer](https://github.com/hm-sarthakshetty/claro-releases/releases/latest)**
+**[Download the latest Home Medix Claro release](https://github.com/hm-sarthakshetty/claro-releases/releases/latest)**
 
-> Windows 10/11 (64-bit). Requires admin privileges to install.
+Choose the installer for your platform:
+
+- **Windows 10/11 (64-bit):** `Home_Medix_Claro_Setup_<version>.exe`
+- **macOS (Intel and Apple silicon):** `Home_Medix_Claro_mac_<version>.dmg`
+
+The `.yml`, `.zip`, and `.blockmap` files are updater metadata. Most users do not need to download them manually.
 
 ## Supported Devices
 
@@ -28,7 +33,7 @@ Desktop software for reading and reporting CPAP/BiPAP therapy data from Home Med
 - Date range filtering for targeted reporting
 - Patient demographics (name, ID, DOB, sex, height, weight) stored on device
 - Healthcare provider branding with per-field visibility control on reports
-- Auto-updates — downloads and installs silently when you close the app
+- In-app updates with background differential downloads and a silent restart-based install on Windows
 - Weekly trend analysis for therapy adherence tracking
 
 ## Report Structure
@@ -46,9 +51,19 @@ Desktop software for reading and reporting CPAP/BiPAP therapy data from Home Med
 2. Therapy overview — 6-panel stacked chart with gap compression
 3. Event window analysis (SD card data) — annotated apnea/hypopnea waveforms
 
-## Activation
+## First Launch
 
-Claro requires a one-time activation code on first launch. Contact your Home Medix representative or email **claro@homemedix.in** to request a code.
+1. Accept the data and privacy notice.
+2. Enter the one-time dealer activation code. A progress indicator remains visible while the code is verified.
+3. Complete Dealer Registration for report identification and support contact details.
+
+Contact your Home Medix representative or email **claro@homemedix.in** to request an activation code.
+
+## Updates
+
+Claro checks for updates in the background. The left panel shows the installed version and update status. When an update is ready, select **Restart to update**.
+
+On Windows, the app closes, applies the update silently to the existing installation, and reopens. The setup wizard is not shown. Electron still replaces packaged application files during this restart; it does not modify the running application in place.
 
 ## Release Notes
 

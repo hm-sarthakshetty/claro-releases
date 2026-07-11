@@ -2,6 +2,39 @@
 
 ---
 
+## v0.1.9 — 11 July 2026
+
+### Electron port, cross-platform releases, and silent updates
+
+#### Windows Update Experience
+- In-app Windows updates now run NSIS silently and reopen Claro after completion; users no longer see the setup wizard during an update.
+- Versioned installer names and retained blockmaps enable differential downloads between published versions instead of forcing the full installer download whenever reusable blocks are available.
+- Existing app data, activation state, registry cache, dealer information, logs, and queued uploads are preserved.
+
+#### Cross-Platform Release Pipeline
+- A single push to `main` builds the Windows NSIS installer and universal macOS package.
+- Both platform builds must pass typecheck and the complete automated test suite before publication.
+- The combined `latest` release contains the Windows installer, macOS DMG, macOS updater ZIP, blockmaps, `latest.yml`, and `latest-mac.yml`.
+
+#### First Launch and Navigation
+- Removed the duplicate startup splash; Claro now has one functional welcome screen.
+- Dealer Activation is completed before Dealer Registration can open.
+- Activation submission shows a visible verification spinner and disables duplicate submission while the server responds.
+- Fixed Dealer Registration fields being blocked by startup overlays on Windows; fields are explicitly editable and focused when the dialog opens.
+- The Edit menu now contains only app-specific Patient Information and Dealer Registration actions.
+- Added a left-panel update control that displays the installed version, update availability, progress, retry state, and restart action.
+
+#### Reports and Viewer
+- Completed the Electron report port with full and single-night PDF generation, legacy section/data ordering, DAT waveform context, device imagery, and Chromium pagination checks.
+- Improved chart labels, legends, tooltips, event distributions, pressure distributions, weekly trends, and the single-night timeline.
+- Added direct report export controls and restored the legacy patient/device/dealer workflows.
+
+#### Validation
+- 693 automated tests pass locally, with opt-in PDF, integration, and performance jobs retained separately.
+- Windows and macOS release jobs package independently, then publish together only after both succeed.
+
+---
+
 ## v1.26.417.50 — 17 April 2026
 
 ### Event Window Analysis rewrite, UI tokenization, new modules
