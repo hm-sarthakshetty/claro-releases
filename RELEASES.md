@@ -2,6 +2,42 @@
 
 ---
 
+## v0.1.17 — 31 July 2026
+
+### SD-card resilience, clearer usage, and reliable cross-platform publishing
+
+#### SD Card and File Reliability
+- Corrupt, truncated, unreadable, or disconnected SD-card data no longer exposes Electron, parser, file-path, or stack-trace details.
+- Claro remains open after a read failure and presents a concise recovery message so the user can reinsert the card and retry.
+- Full technical diagnostics remain available in the local application log for support.
+- The file picker only defaults to a removable volume containing device data; unrelated or inaccessible volumes are ignored.
+- Windows removable-drive discovery now has a bounded timeout.
+
+#### Night Calendar and Chart Interaction
+- Replaced the arbitrary 12-hour `%DUT` value with compact nightly usage such as `7h42m`.
+- Usage is blue at or above the four-hour compliance threshold and red below four hours.
+- Multiple sessions from the same night are combined before calculating usage and compliance.
+- Corrected the noon-to-noon calendar endpoints so `12:00` and `11:59` remain aligned inside the timeline.
+- Improved graph tooltip targeting, positioning, viewport clamping, and clinical labels.
+
+#### Startup and Reports
+- File actions remain hidden behind a loading indicator until the device registry is ready.
+- OS-opened files and drag/drop use the same registry-ready gate as the Open File button.
+- Production reports now use the packaged application version instead of displaying a development placeholder.
+- Report and viewer behavior remains aligned with the legacy app's section ordering and outputs.
+
+#### Release Delivery
+- Windows and macOS installers now upload directly to the public `claro-releases` release.
+- Removed the temporary GitHub Actions artifact handoff, eliminating failures caused by Actions storage quotas.
+- The workflow verifies the exact versioned Windows installer, macOS DMG/ZIP, blockmaps, and updater metadata before marking the release current.
+- A single `main` push still builds and publishes both platforms.
+
+#### Validation
+- 705 automated tests pass, with five opt-in PDF, integration, and performance checks skipped in the standard run.
+- The `v0.1.17` Windows installer, universal macOS DMG/ZIP, blockmaps, `latest.yml`, and `latest-mac.yml` were verified in the published release.
+
+---
+
 ## v0.1.9 — 11 July 2026
 
 ### Electron port, cross-platform releases, and silent updates

@@ -6,10 +6,12 @@ Desktop software for reading and reporting CPAP/BiPAP therapy data from Home Med
 
 **[Download the latest Home Medix Claro release](https://github.com/hm-sarthakshetty/claro-releases/releases/latest)**
 
+Current release: **v0.1.17** — 31 July 2026
+
 Choose the installer for your platform:
 
-- **Windows 10/11 (64-bit):** `Home_Medix_Claro_Setup_<version>.exe`
-- **macOS (Intel and Apple silicon):** `Home_Medix_Claro_mac_<version>.dmg`
+- **Windows 10/11 (64-bit):** `Home_Medix_Claro_Setup_0.1.17.exe`
+- **macOS (Intel and Apple silicon):** `Home_Medix_Claro_mac_0.1.17.dmg`
 
 The `.yml`, `.zip`, and `.blockmap` files are updater metadata. Most users do not need to download them manually.
 
@@ -35,6 +37,8 @@ The `.yml`, `.zip`, and `.blockmap` files are updater metadata. Most users do no
 - Healthcare provider branding with per-field visibility control on reports
 - In-app updates with background differential downloads and a silent restart-based install on Windows
 - Weekly trend analysis for therapy adherence tracking
+- Night calendar with compact nightly usage and clear four-hour compliance coloring
+- Graceful recovery when an SD card is incomplete, unreadable, or disconnected
 
 ## Report Structure
 
@@ -64,6 +68,17 @@ Contact your Home Medix representative or email **claro@homemedix.in** to reques
 Claro checks for updates in the background. The left panel shows the installed version and update status. When an update is ready, select **Restart to update**.
 
 On Windows, the app closes, applies the update silently to the existing installation, and reopens. The setup wizard is not shown. Electron still replaces packaged application files during this restart; it does not modify the running application in place.
+
+## SD Card Troubleshooting
+
+If Claro cannot open the selected device data:
+
+1. Remove and reinsert the SD card.
+2. Confirm the card contains a Home Medix device data file.
+3. Try copying the card contents to the computer and opening the copied file.
+4. If the card remains unreadable, use a replacement card and contact your Home Medix representative.
+
+Claro keeps the application open after a card-read failure. Technical details are written to the local application log for support without exposing parser or system errors in the user interface.
 
 ## Release Notes
 
